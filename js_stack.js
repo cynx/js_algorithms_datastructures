@@ -24,7 +24,7 @@ class Stack {
 
 }
 
-/** testing the stack **//**
+/** testing the stack **/
 let stackItems = new Stack();
 stackItems.push('233');
 stackItems.push('232');
@@ -35,9 +35,8 @@ console.log(stackItems.size());
 console.log(stackItems.isEmtpy());
 stackItems.clear();
 console.log(stackItems.isEmtpy());
-**/
 
-/** implementing base converter to use stack concept. Converts decimal to binary for base of 2,8 or 16 **/
+/** implementing base converter to use stack concept. Converts decimal to binary, octal or hex **/
 let baseConvertor = (decimalNumber, base) => {
     let remainderStack = new Stack(), remainder, baseString = '',
         digits = '0123456789ABCDEF';
