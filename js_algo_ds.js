@@ -37,4 +37,41 @@ let flattenArray = arr => {
 
 console.log('Flattened Array: '+flattenArray(nestedArray));
 
+/** Array - sorting numbers **/
+let numericArray = [1,10,3,33,2,4,7,15,9];
+let sortNumberCallback = (a,b) => {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0; //if a==b;
+};
 
+console.log(numericArray.sort(sortNumberCallback));
+
+/** Array - sorting strings **/
+let stringArray = ['anna','ben','zora','Clen','Aura','Matt','BOND'];
+let sortStringCallback = (a,b) => {
+  if (a.toLowerCase() < b.toLowerCase()) return -1;
+  if (a.toLowerCase() > b.toLowerCase()) return 1;
+  return 0; //if a==b;
+};
+
+console.log(stringArray.sort(sortStringCallback));
+
+/** Array - sorting objects on a property **/
+let arrayOfObj = [{
+  'name':'john',
+  'age':45
+},{
+  'name':'kyle',
+  'age':15
+},{
+  'name':'ammy',
+  'age':35
+}];
+let sortOjbCallback = (a,b) => {
+  if (a.age < b.age) return -1;
+  if (a.age > b.age) return 1;
+  return 0; //if a==b;
+};
+
+console.log(arrayOfObj.sort(sortOjbCallback));
