@@ -27,3 +27,14 @@ let fibonacciSeries = index => {
 
 console.log('Fibonacci Series: '+fibonacciSeries(10));
 
+/** Flatten an array **/
+let nestedArray = [[1,2],[3,4],[12,34],[2,5],[7,89]];
+let flattenArray = arr => {
+  return arr.reduce((previousValue,nextValue) =>{
+     return previousValue.concat(nextValue);
+  });
+};
+
+console.log('Flattened Array: '+flattenArray(nestedArray));
+
+
