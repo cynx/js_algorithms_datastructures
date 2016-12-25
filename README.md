@@ -12,3 +12,9 @@ some common data structures and algorithms in JavaScript for beginners
 ###js_stack.js:
 * Stack class implementation
 * Base Convertor using stack. Convert decimal to binary, octal or hex
+
+###js_queue.js
+* Queue class implementation
+* Basic Queue Example
+* Priority Queue
+* Hot Potato - Circular Queue (Elimination)
