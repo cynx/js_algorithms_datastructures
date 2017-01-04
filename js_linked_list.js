@@ -162,3 +162,7 @@
 
  })();
 
+//examples
+ let list = new LinkedList();
+ list.append(9);
+ list.print();
