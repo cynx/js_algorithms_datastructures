@@ -21,3 +21,4 @@ some common data structures and algorithms in JavaScript for beginners
 
 ###js_linked_list.js
 * Linked List Implementation and Examples
+* Doubly Linked List Implementation and Examples
