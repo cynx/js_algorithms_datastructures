@@ -423,3 +423,213 @@ doublyList.removeAt(1);
 doublyList.print();
 doublyList.remove(12);
 doublyList.printInverse();
+
+
+//Circular Linked List
+
+let CircularLinkedList =   (function(){
+
+    class Node{
+        constructor(element){
+            this.element = element;
+            this.next = null;
+        }
+    }
+
+    const length = new WeakMap();
+    const head = new WeakMap();
+
+
+    class CircularLinkedList{
+        constructor(){
+            length.set(this,0);
+            head.set(this,null);
+        }
+
+        append(element){
+            let node = new Node(element), current;
+
+            //check for first node on the lsit
+            if (this.getHead() === null){
+                head.set(this,node);
+            } else {
+                current = this.getHead();
+
+                //loop until find last
+                while (current.next !== this.getHead()){
+                    current = current.next;
+                }
+
+                //get the last item and assign it
+                current.next = node;
+            }
+
+            //set node.next to head - to have circular list
+            node.next = this.getHead();
+
+            //update list size
+            let l = this.size();
+            l++;
+            length.set(this,l);
+        }
+
+        insert(position,element){
+            //check for position bound
+            if(position>=0 && position<=this.size()){
+                let node = new Node(element),
+                    current = this.getHead(),
+                    previous,
+                    index=0;
+
+                if (position === 0){
+                    if(!this.getHead()) { // if no node  in list
+                        head.set(this, node);
+                        node.next = this.getHead();
+                    } else {
+                        node.next = current;
+                        //update last element
+                        while(current.next !== this.getHead()) { //last element will be head instead of NULL
+                            current = current.next;
+                        }
+                        head.set(this, node);
+                        current.next = this.getHead();
+                    }
+                }else{
+                    while (index++ < position) {
+                        previous = current;
+                        current = current.next;
+                    }
+                    node.next = current;
+                    previous.next = node;
+                }
+
+                //update size of list
+                let l = this.size();
+                l++;
+                length.set(this, l);
+
+                return true;
+
+
+            }else{
+                return false;
+            }
+        }
+
+        removeAt(position){
+            if (position > -1 && position < this.size()) {
+                let current = this.getHead(),
+                    previous,
+                    index=0;
+
+                if (position === 0){
+                    while (current.next !== this.getHead()) { //needs to update last element first
+                        current = current.next;
+                    }
+
+                    head.set(this, this.getHead().next);
+                    current.next = this.getHead();
+                }else{
+                    while (index++ < position) {
+
+                        previous = current;
+                        current = current.next;
+                    }
+
+                    //link previous with current's next - skip it to remove
+                    previous.next = current.next;
+                }
+
+                let l = this.size();
+                l--;
+                length.set(this, l);
+
+                return current.element;
+
+            }else{
+                return null;
+            }
+        }
+
+        remove(element) {
+
+            let index = this.indexOf(element);
+            return this.removeAt(index);
+        }
+
+        indexOf(element) {
+
+            let current = this.getHead(),
+                index = -1;
+
+            //check first item
+            if (element == current.element) {
+                return 0;
+            }
+
+            index++;
+
+            //check in the middle of the list
+            while (current.next !== this.getHead()) {
+
+                if (element == current.element) {
+                    return index;
+                }
+
+                current = current.next;
+                index++;
+            }
+
+            //check last item
+            if (element == current.element) {
+                return index;
+            }
+
+            return -1;
+        }
+
+        getHead(){
+            return head.get(this);
+        }
+
+        size(){
+            return length.get(this);
+        }
+
+        isEmpty(){
+            return  this.size() === 0;
+        }
+
+        print(){
+            console.log(this.toString());
+        }
+
+        toString() {
+
+            let current = this.getHead(),
+                s = current.element;
+
+            while (current.next !== this.getHead()) {
+                current = current.next;
+                s += ', ' + current.element;
+            }
+
+            return s.toString();
+
+        }
+    }
+
+    return CircularLinkedList;
+
+})();
+
+//examples
+let circularList = new CircularLinkedList();
+circularList.append(33);
+circularList.append(32);
+circularList.print();
+circularList.insert(0,12);
+circularList.print();
+circularList.remove(12);
+circularList.removeAt(0);
+circularList.print();
