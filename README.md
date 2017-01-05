@@ -18,3 +18,6 @@ some common data structures and algorithms in JavaScript for beginners
 * Basic Queue Example
 * Priority Queue
 * Hot Potato - Circular Queue (Elimination)
+
+###js_linked_list.js
+* Linked List Implementation and Examples

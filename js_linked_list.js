@@ -166,3 +166,11 @@
  let list = new LinkedList();
  list.append(9);
  list.print();
+ list.insert(1,12);
+ list.print();
+ list.insert(1,10);
+ list.print();
+ list.removeAt(1);
+ list.print();
+ list.remove(9);
+ list.print();
