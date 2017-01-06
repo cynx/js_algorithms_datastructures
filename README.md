@@ -23,3 +23,10 @@ some common data structures and algorithms in JavaScript for beginners
 * Linked List Implementation and Examples
 * Doubly Linked List Implementation and Examples
 * Circular Linked List Implementation and Examples
+
+###js_set.js
+* Set Class implementation
+* Union Example
+* Intersect Example
+* Difference Example
+* Subset Example

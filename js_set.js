@@ -150,7 +150,7 @@ let differenceBA = setB.difference(setA);
 console.log(differenceAB.values());
 console.log(differenceBA.values());
 
-//subset
+//Subset
 setA = new Set();
 setB = new Set();
 
