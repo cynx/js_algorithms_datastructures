@@ -633,3 +633,6 @@ circularList.print();
 circularList.remove(12);
 circularList.removeAt(0);
 circularList.print();
+
+//export for hash
+module.exports = LinkedList;
