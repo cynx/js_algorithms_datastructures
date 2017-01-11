@@ -12,7 +12,7 @@ class ValuePair{
 }
 
 //Separate Chaining Hash implementation
-class HashTableSeperateChaining {
+class HashTableSeparateChaining {
     constructor(){
         this.table = [];
 
@@ -102,7 +102,7 @@ class HashTableSeperateChaining {
 }
 
 //examples of hashSC
-let hashSC = new HashTableSeperateChaining();
+let hashSC = new HashTableSeparateChaining();
 hashSC.put('ron','ron@email.com');
 hashSC.put('jenny','jenny@email.com');
 hashSC.print();
@@ -112,7 +112,7 @@ hashSC.remove('ron');
 hashSC.print();
 
 //Linear Probing Hash implementation
-class HashTableLinerProbing extends HashTableSeperateChaining {
+class HashTableLinearProbing extends HashTableSeparateChaining {
     constructor(){
         super();
     }
@@ -178,7 +178,7 @@ class HashTableLinerProbing extends HashTableSeperateChaining {
     }
 }
 
-let hashLP = new HashTableLinerProbing();
+let hashLP = new HashTableLinearProbing();
 console.log('***linearProbing***');
 hashLP.put('shiv','shiv@email.com');
 hashLP.put('reed','reed@gmail.com');

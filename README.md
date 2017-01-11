@@ -30,3 +30,7 @@ some common data structures and algorithms in JavaScript for beginners
 * Intersect Example
 * Difference Example
 * Subset Example
+
+###js_hash.js
+* Hash Table - Separate Chaining
+* Hash Table - Linear Probing
