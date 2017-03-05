@@ -34,3 +34,12 @@ some common data structures and algorithms in JavaScript for beginners
 ###js_hash.js
 * Hash Table - Separate Chaining
 * Hash Table - Linear Probing
+
+###js_binary_search_tree.js
+* BST Implementation
+* Insert 
+* Search
+* In Order Traverse
+* Pre Order Traverse
+* Post Order Traverse
+* Delete
