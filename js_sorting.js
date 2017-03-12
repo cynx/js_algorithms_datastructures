@@ -4,10 +4,15 @@ let Sorting = (function(){
             this.array = array;
             this._swap = this._swap.bind(this);
             this.toString = this.toString.bind(this);
+            this._mergeSortHelper = this._mergeSortHelper.bind(this);
+            this._merge = this._merge.bind(this);
+            this._partition = this._partition.bind(this);
+            this._quick = this._quick.bind(this);
+            this.quickSort = this.quickSort.bind(this);
         }
 
-        _swap(index1,index2){
-            [this.array[index1],this.array[index2]] = [this.array[index2],this.array[index1]];
+        _swap(array,index1,index2){
+            [array[index1],array[index2]] = [array[index2],array[index1]];
         }
 
         toString(){
@@ -20,7 +25,7 @@ let Sorting = (function(){
             for (let i=0; i<length; i++){
                 for (let j=0; j < length-1-i;j++){
                     if (this.array[j] > this.array[j+1]){
-                        this._swap(j,j+1);
+                        this._swap(this.array,j,j+1);
                     }
                 }
             }
@@ -38,7 +43,7 @@ let Sorting = (function(){
                     }
                 }
                 if (i !== indexMin){
-                    this._swap(i,indexMin);
+                    this._swap(this.array, i,indexMin);
                 }
             }
         }
@@ -56,6 +61,112 @@ let Sorting = (function(){
             }
         }
 
+        mergeSort(){
+            this.array = this._mergeSortHelper(this.array);
+        }
+
+        _mergeSortHelper(array){
+            let length = array.length;
+
+            if (length < 2){
+                return array;
+            }
+
+            let mid = Math.floor(length/2),
+                left = array.slice(0,mid),
+                right = array.slice(mid,length);
+
+            return this._merge(this._mergeSortHelper(left),this._mergeSortHelper(right));
+        }
+
+        _merge(left,right){
+            let result=[];
+
+            while (left.length && right.length){
+                if (left[0] < right[0]){
+                    result.push(left.shift());
+                }else {
+                    result.push(right.shift());
+                }
+            }
+
+            while(left.length){
+                result.push(left.shift());
+            }
+
+            while(right.length){
+                result.push(right.shift());
+            }
+
+            return result;
+        }
+
+        quickSort(){
+            this._quick(this.array,0, this.array.length-1);
+        }
+
+        _partition(array,left,right){
+            let pivot = array[Math.floor((right+left)/2)],
+                i = left,
+                j = right;
+
+            while(i <= j){
+                while(array[i]< pivot){
+                    i++;
+                }
+                while(array[j]>pivot){
+                    j--;
+                }
+                if (i <= j){
+                    this._swap(array,i,j);
+                    i++;
+                    j--;
+                }
+
+            }
+
+            return i;
+        }
+
+        _quick(array,left,right){
+            let index;
+
+            if (array.length > 1){
+                index = this._partition(array,left,right);
+
+                if (left < index - 1){
+                    this._quick(array,left,index-1);
+                }
+
+                if (index < right){
+                    this._quick(array,index,right);
+                }
+            }
+            return array;
+        }
+
+        binarySearch(item){
+            this.quickSort();
+
+            let low = 0, high = this.array.length - 1,
+                mid, element;
+
+            while( low <= high ){
+                mid = Math.floor((low + high) / 2);
+                element = this.array[mid];
+
+                if (element < item){
+                    low = mid + 1;
+                }else if (element > item){
+                    high = mid - 1;
+                } else {
+                    return mid;
+                }
+            }
+
+            return -1;
+
+        }
     }
 
     return Sorting;
@@ -63,5 +174,5 @@ let Sorting = (function(){
 
 let testArray = [5,3,1,2,4,6];
 bubbleSort = new Sorting(testArray);
-bubbleSort.insertionSort();
+bubbleSort.quickSort();
 console.log(bubbleSort.toString());

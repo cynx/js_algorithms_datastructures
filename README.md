@@ -1,5 +1,5 @@
 # js_algorithms_datastructures
-some common data structures and algorithms in JavaScript for beginners
+Few common algorithms and data structures in JavaScript
 
 ###js_basics_array.js:
 * Fibonacci number at Fn position
@@ -43,3 +43,11 @@ some common data structures and algorithms in JavaScript for beginners
 * Pre Order Traverse
 * Post Order Traverse
 * Delete
+
+###js_sorting
+* Bubble Sort
+* Selection Sort
+* Insertion Sort
+* Merge Sort
+* Quick Sort
+* Binary Search using Quick Sort
